@@ -4,8 +4,11 @@
 #include <queue>
 #include <lemon/preflow.h>
 #include "group_tsp_lp_solver.h"
+#include <random>
 
 #define EPS 1e-7
+
+int calculateIntegralWithProportionalProbability(float prob);
 
 int
 HeuristicGroupTSP(ListGraph &g,  ListGraph::EdgeMap<double>& weights, vector<
@@ -53,6 +56,7 @@ HeuristicGroupTSP(ListGraph &g,  ListGraph::EdgeMap<double>& weights, vector<
   while (rettype == GroupTSPLPSolver::OPTIMAL_FRACTIONARY) {
     cout << "Solving..\n";
     rettype = solver.getSolution(lpsol_vertex, lpsol_edge, objVal);
+
     if (fabsl(LB - (-1)) < EPS) {
       LB = objVal;
     }
@@ -73,7 +77,8 @@ HeuristicGroupTSP(ListGraph &g,  ListGraph::EdgeMap<double>& weights, vector<
       }
 
       if (mx_idx != INVALID) {
-        int val = (lpsol_vertex[mx_idx] > 0.5 ? 1 : 0);
+        // int val = (lpsol_vertex[mx_idx] > 0.5 ? 1 : 0);
+        int val = calculateIntegralWithProportionalProbability(lpsol_vertex[mx_idx]);
         cout << "Fixing " << g.id(mx_idx) << " to " << val << "\n";
         solver.fixNodeVariable(mx_idx, val);
         already_set[mx_idx] = true;
@@ -125,5 +130,16 @@ HeuristicGroupTSP(ListGraph &g,  ListGraph::EdgeMap<double>& weights, vector<
       }
     }
     return fabsl(objVal - LB) < EPS ? 2 : 1;
+  }
+}
+
+int calculateIntegralWithProportionalProbability(float prob) {
+  std::random_device rd;
+  std::mt19937 mt(rd());
+  std::uniform_real_distribution<double> dist(0, 1);
+  if(dist(mt) >= prob) {
+    return 0;
+  } else {
+    return 1;
   }
 }

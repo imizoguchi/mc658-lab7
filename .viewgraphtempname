@@ -51,17 +51,17 @@ graph g {
 	2 [style = filled, color="blue", pos = "8.113158,2.967496!" ];
 	1 [style = filled, color="blue", pos = "15.912771,28.809863!" ];
 	0 [style = filled, color="blue", pos = "29.153518,31.266616!" ];
-	42  -- 43 [label = "204", color="red" ];
+	34  -- 44 [label = "568", color="red" ];
+	34  -- 38 [label = "362", color="red" ];
+	22  -- 44 [label = "655", color="red" ];
+	19  -- 22 [label = "427", color="red" ];
 	18  -- 33 [label = "43", color="red" ];
-	11  -- 26 [label = "391", color="red" ];
-	11  -- 29 [label = "247", color="red" ];
-	9  -- 29 [label = "853", color="red" ];
-	9  -- 42 [label = "711", color="red" ];
+	17  -- 20 [label = "352", color="red" ];
+	17  -- 19 [label = "61", color="red" ];
 	5  -- 33 [label = "707", color="red" ];
-	5  -- 43 [label = "24", color="red" ];
+	5  -- 20 [label = "52", color="red" ];
+	4  -- 38 [label = "368", color="red" ];
 	4  -- 18 [label = "116", color="red" ];
-	1  -- 4 [label = "526", color="red" ];
-	1  -- 26 [label = "474", color="red" ];
 label="";
 fontsize=50;
 }

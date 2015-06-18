@@ -1,6 +1,6 @@
 CPP     = g++
 #CC_ARGS = -m64 -std=c++11 -g -O2
-CC_ARGS = -m64 -g -O2
+CC_ARGS = -m64 -g -O2 -std=c++11
 
 # Modifique os caminhos de instalacao do Gurobi e do lemon abaixo abaixo
 GUROBI_HOME=/opt/gurobi602/linux64/
